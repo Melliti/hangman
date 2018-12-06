@@ -5,12 +5,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>hangman</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
     <script src="../js/hangman.js"></script>
 </head>
 <body onload="pickPokemon()">
-    <div id="name">
+
+    <div class="container">
+        <div id="name">
+        </div>
+        <div class="row">
+            <form class="col s1">
+                <div class="input-field col s12">
+                    <input id="letter" type="text" class="validate">
+                    <label for="letter">Letter</label>
+                </div>
+            </form>
+            <form class="left col s11">
+                    <div class="input-field col s12">
+                            <input id="fullName" type="text" class="validate">
+                            <label for="fullName">Full Name</label>
+                    </div>
+            </form>
+        </div>
 
     </div>
+
 </body>
 </html>

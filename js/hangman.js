@@ -47,7 +47,7 @@ function pickPokemon() {
                 pokemonInfo[2] = pokemonObj.sprites.front_shiny;
                 createHangman();
                 pokemonName = formatStr(pokemonName);
-                divName.innerHTML = '<p>' + pokemonName + '</p>';
+                divName.innerHTML = '<p class=\"center-align\">' + pokemonName + '</p>';
                 return pokemonInfo;
             }
         }
