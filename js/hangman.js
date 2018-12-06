@@ -18,10 +18,9 @@ function createHangman() {
         pokemonName += '_';
         i++;
     }
+    pokemonName += '_';
     pokemonName = pokemonName.replace(pokemonName.charAt(0), pokemonInfo[0][0]);
-    pokemonName = pokemonName.replace(/.$/, pokemonInfo[0][i]);
-    //pokemonName[i - 1] = pokemonInfo[0][i - 1];
-    console.log(pokemonName);
+    pokemonName = pokemonName.replace(/.$/, pokemonInfo[0][i]); 
 }
 
 function randomPokemon() {
@@ -46,10 +45,19 @@ function pickPokemon() {
                 pokemonInfo[1] = pokemonObj.sprites.front_default;
                 pokemonInfo[2] = pokemonObj.sprites.front_shiny;
                 createHangman();
-                pokemonName = formatStr(pokemonName);
+                pokemonName = formatStr(pokemonName).toUpperCase();
                 divName.innerHTML = '<p class=\"center-align\">' + pokemonName + '</p>';
                 return pokemonInfo;
             }
         }
     }
+
+}
+
+function checkLetter() {
+    console.log(pokemonInfo[0]);
+}
+
+function checkName() {
+    console.log("triggered2");
 }
