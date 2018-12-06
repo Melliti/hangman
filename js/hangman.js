@@ -1,5 +1,6 @@
 var pokemonInfo = new Array;
 var pokemonName = "";
+var attempt = 8;
 
 function formatStr(pokemonName) {
    var a = [], start=0;
@@ -70,6 +71,15 @@ function checkName() {
         var img = document.getElementById("pokemonSprite");
         img.style.display = "block";
         img.style.margin = "0 auto";
+    }
+    else
+    {
+        attempt--;
+        if (attempt == 0)
+        {
+            //update attempt
+            // remove input, game over message
+        }
     }
     
 }
