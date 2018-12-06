@@ -32,7 +32,7 @@ function randomPokemon() {
 
 function pickPokemon() {
     var reader = new XMLHttpRequest();
-    var divName = document.getElementById('name');
+    var divForName = document.getElementById('name');
     reader.open('GET', 'https://pokeapi.co/api/v2/pokemon/' + randomPokemon() + '/', true);
     reader.send('null');
     reader.onreadystatechange = function () {
@@ -46,7 +46,7 @@ function pickPokemon() {
                 pokemonInfo[2] = pokemonObj.sprites.front_shiny;
                 createHangman();
                 pokemonName = formatStr(pokemonName).toUpperCase();
-                divName.innerHTML = '<p class=\"center-align\">' + pokemonName + '</p>';
+                divForName.innerHTML = '<p class=\"center-align\">' + pokemonName + '</p>';
                 return pokemonInfo;
             }
         }
@@ -59,5 +59,17 @@ function checkLetter() {
 }
 
 function checkName() {
-    console.log("triggered2");
+    var answer = document.getElementById("fullName").value.toLowerCase();
+    console.log(pokemonInfo[0]);
+    if (answer == pokemonInfo[0])
+    {
+        console.log("succeed");
+        var divForSprite = document.getElementById("sprite");
+        console.log(pokemonInfo[1]);
+        divForSprite.innerHTML = '<img src=\"' + pokemonInfo[1] +  '\" id=\"pokemonSprite\">';
+        var img = document.getElementById("pokemonSprite");
+        img.style.display = "block";
+        img.style.margin = "0 auto";
+    }
+    
 }

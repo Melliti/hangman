@@ -9,11 +9,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
 </head>
+
 <body onload="pickPokemon()">
 
     <div class="container">
+
+        <div id="sprite">
+        </div>
+
         <div id="name">
         </div>
+
         <div class="row">
             <form class="col s1" onsubmit="checkLetter(); return false">
                 <div class="input-field col s12">
@@ -21,6 +27,7 @@
                     <label for="letter">Letter</label>
                 </div>
             </form>
+
             <form class="left col s11" onsubmit="checkName(); return false">
                     <div class="input-field col s12">
                             <input id="fullName" type="text" class="validate">
@@ -28,8 +35,9 @@
                     </div>
             </form>
         </div>
-
+        
     </div>
+
     <script src="../js/hangman.js"></script>
 
 </body>
