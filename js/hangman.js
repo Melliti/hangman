@@ -105,6 +105,7 @@ function isWin(answer) {
             var img = document.getElementById("pokemonSprite");
             img.style.display = "block";
             img.style.margin = "0 auto";
+            document.getElementById("userInput").style.display = "none";
             return 0;
         }
 
