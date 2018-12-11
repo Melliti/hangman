@@ -16,7 +16,10 @@ function createHangman() {
 
     while (i != pokemonInfo[0].length - 1)
     {
-        pokemonName += '_';
+        if (pokemonInfo[0] == '-')
+            pokemonName += '-';
+        else
+            pokemonName += '_';
         i++;
     }
     pokemonName += '_';
@@ -55,35 +58,44 @@ function pickPokemon() {
 }
 
 function checkLetter() {
-    var answer = document.getElementById("letter").value.toLowerCase();
+    var answer = document.getElementById("letter").value;
     var indices = indexesOf(pokemonInfo[0].toUpperCase(), answer.toUpperCase());
-    console.log(indices);
     if (indices.length > 0)
         replaceAt(indices, answer);
+    if (indices.length == 0)
+        attempt--;
+    document.getElementById("letter").value = "";
+    isWin(answer);
 }
 
 function checkName() {
-    var answer = document.getElementById("fullName").value.toLowerCase();
+    var answer = document.getElementById("fullName").value;
     console.log(pokemonInfo[0]);
-    if (answer == pokemonInfo[0])
-    {
-        console.log("succeed");
-        var divForSprite = document.getElementById("sprite");
-        console.log(pokemonInfo[1]);
-        divForSprite.innerHTML = '<img src=\"' + pokemonInfo[1] +  '\" id=\"pokemonSprite\">';
-        var img = document.getElementById("pokemonSprite");
-        img.style.display = "block";
-        img.style.margin = "0 auto";
-    }
-    else
+    if (!isWin(answer))
     {
         attempt--;
         if (attempt == 0)
         {
             //update attempt
             // remove input, game over message
-        }
+        }           
     }
+    var answer = document.getElementById("fullName").value = "";
+}
+
+function isWin(answer) {
+    if (answer.toUpperCase() == pokemonInfo[0].toUpperCase()
+        || !pokemonName.includes("_"))
+        {
+            var divForSprite = document.getElementById("sprite");
+            console.log(pokemonInfo[1]);
+            divForSprite.innerHTML = '<img src=\"' + pokemonInfo[1] +  '\" id=\"pokemonSprite\">';
+            var img = document.getElementById("pokemonSprite");
+            img.style.display = "block";
+            img.style.margin = "0 auto";
+            return 0;
+        }
+    return 1;
 }
 
 function indexesOf(str, content) {
