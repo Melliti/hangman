@@ -16,7 +16,7 @@ function createHangman() {
 
     while (i != pokemonInfo[0].length - 1)
     {
-        if (pokemonInfo[0] == '-')
+        if (pokemonInfo[i] == "-")
             pokemonName += '-';
         else
             pokemonName += '_';
@@ -88,13 +88,26 @@ function isWin(answer) {
         || !pokemonName.includes("_"))
         {
             var divForSprite = document.getElementById("sprite");
-            console.log(pokemonInfo[1]);
-            divForSprite.innerHTML = '<img src=\"' + pokemonInfo[1] +  '\" id=\"pokemonSprite\">';
+            var i = Math.floor((Math.random() * 5) + 1)
+
+            if (i == 1)
+            {
+                console.log("shiny");
+                console.log(pokemonInfo[2]);
+                divForSprite.innerHTML = '<img src=\"' + pokemonInfo[2] +  '\" id=\"pokemonSprite\">';
+            }
+            else
+            {
+                console.log(pokemonInfo[1]);
+                divForSprite.innerHTML = '<img src=\"' + pokemonInfo[1] +  '\" id=\"pokemonSprite\">';
+            }
+
             var img = document.getElementById("pokemonSprite");
             img.style.display = "block";
             img.style.margin = "0 auto";
             return 0;
         }
+
     return 1;
 }
 
