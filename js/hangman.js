@@ -52,11 +52,14 @@ function pickPokemon() {
             }
         }
     }
-
 }
 
 function checkLetter() {
-    console.log(pokemonInfo[0]);
+    var answer = document.getElementById("letter").value.toLowerCase();
+    var indices = indexesOf(pokemonInfo[0].toUpperCase(), answer.toUpperCase());
+    console.log(indices);
+    if (indices.length > 0)
+        replaceAt(indices, answer);
 }
 
 function checkName() {
@@ -81,5 +84,24 @@ function checkName() {
             // remove input, game over message
         }
     }
+}
+
+function indexesOf(str, content) {
+    var indices = [];
+    console.log(str, content);
+    for(var idx = 1; idx < str.length - 1; idx++)
+        if (str[idx] === content)
+            indices.push(idx);
+    //replaceAt(indices);
+    return indices;
+}
+
+function replaceAt(indices, letter) {
     
+    indices.forEach(elem => {
+        pokemonName = pokemonName.substr(0, elem) + letter + pokemonName.substr(elem + 1);
+        console.log(typeof(pokemonName) + typeof(letter));
+        console.log(pokemonName);
+    });
+    console.log(pokemonName);
 }
