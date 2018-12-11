@@ -92,16 +92,15 @@ function indexesOf(str, content) {
     for(var idx = 1; idx < str.length - 1; idx++)
         if (str[idx] === content)
             indices.push(idx);
-    //replaceAt(indices);
     return indices;
 }
 
 function replaceAt(indices, letter) {
     
     indices.forEach(elem => {
-        pokemonName = pokemonName.substr(0, elem) + letter + pokemonName.substr(elem + 1);
-        console.log(typeof(pokemonName) + typeof(letter));
-        console.log(pokemonName);
+        pokemonName = pokemonName.substr(0, elem * 2) + letter.toUpperCase() + pokemonName.substr(elem * 2 + 1);
     });
-    console.log(pokemonName);
+
+    var divForName = document.getElementById('name');
+    divForName.innerHTML = '<p class=\"center-align\">' + pokemonName + '</p>';
 }
