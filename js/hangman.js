@@ -64,23 +64,23 @@ function checkLetter() {
         replaceAt(indices, answer);
     if (indices.length == 0)
         attempt--;
+    if (attempt == 0)
+        isLost();
     document.getElementById("letter").value = "";
     isWin(answer);
 }
 
 function checkName() {
     var answer = document.getElementById("fullName").value;
-    console.log(pokemonInfo[0]);
-    if (!isWin(answer))
-    {
-        attempt--;
-        if (attempt == 0)
-        {
-            //update attempt
-            // remove input, game over message
-        }           
-    }
+    console.log(pokemonInfo[0] + " " + isWin(answer));
+    if (isWin(answer))
+        if (--attempt == 0)
+            isLost();
     var answer = document.getElementById("fullName").value = "";
+}
+
+function isLost() {
+    document.getElementById("userInput").style.display = "none";
 }
 
 function isWin(answer) {
