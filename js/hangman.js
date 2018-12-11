@@ -72,7 +72,7 @@ function checkLetter() {
 
 function checkName() {
     var answer = document.getElementById("fullName").value;
-    console.log(pokemonInfo[0] + " " + isWin(answer));
+    console.log(pokemonInfo[0]);
     if (isWin(answer))
         if (--attempt == 0)
             isLost();
@@ -88,7 +88,7 @@ function isWin(answer) {
         || !pokemonName.includes("_"))
         {
             var divForSprite = document.getElementById("sprite");
-            var i = Math.floor((Math.random() * 5) + 1)
+            var i = Math.floor((Math.random() * 10) + 1)
 
             if (i == 1)
             {
