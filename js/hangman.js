@@ -2,15 +2,17 @@ var pokemonInfo = new Array;
 var pokemonName = "";
 var attempt = 8;
 
+// place space between char before display on the browser for an easy reading of the hangman
 function formatStr(pokemonName) {
    var a = [], start=0;
-   while(start<pokemonName.length) {
-      a.push(pokemonName.slice(start, start+1));
-      start+=1;
+   while(start < pokemonName.length) {
+      a.push(pokemonName.slice(start, start + 1));
+      start += 1;
    }
    return a.join(" ");
 }
 
+// Replace characters exept the first and the last by "_"
 function createHangman() {
     var i = 0;
 
@@ -27,6 +29,7 @@ function createHangman() {
     pokemonName = pokemonName.replace(/.$/, pokemonInfo[0][i]); 
 }
 
+// Do the random
 function randomPokemon() {
     // 802 = number of pokemon in the API
     var selectedPokemon = 0;
@@ -34,6 +37,7 @@ function randomPokemon() {
     return selectedPokemon;
 }
 
+// pick a random pokemon name from pokeapi
 function pickPokemon() {
     var reader = new XMLHttpRequest();
     var divForName = document.getElementById('name');
@@ -57,6 +61,7 @@ function pickPokemon() {
     }
 }
 
+// Check if the letter input is correct
 function checkLetter() {
     var answer = document.getElementById("letter").value;
     var indices = indexesOf(pokemonInfo[0].toUpperCase(), answer.toUpperCase());
@@ -70,6 +75,7 @@ function checkLetter() {
     isWin(answer);
 }
 
+// Check if the name input is correct
 function checkName() {
     var answer = document.getElementById("fullName").value;
     console.log(pokemonInfo[0]);
@@ -79,10 +85,12 @@ function checkName() {
     var answer = document.getElementById("fullName").value = "";
 }
 
+// Triggered when Attempt == 0: Loose condition
 function isLost() {
     document.getElementById("userInput").style.display = "none";
 }
 
+// Triggered after every correct answers: Check win conditions
 function isWin(answer) {
     if (answer.toUpperCase() == pokemonInfo[0].toUpperCase()
         || !pokemonName.includes("_"))
@@ -91,16 +99,9 @@ function isWin(answer) {
             var i = Math.floor((Math.random() * 10) + 1)
 
             if (i == 1)
-            {
-                console.log("shiny");
-                console.log(pokemonInfo[2]);
                 divForSprite.innerHTML = '<img src=\"' + pokemonInfo[2] +  '\" id=\"pokemonSprite\">';
-            }
             else
-            {
-                console.log(pokemonInfo[1]);
                 divForSprite.innerHTML = '<img src=\"' + pokemonInfo[1] +  '\" id=\"pokemonSprite\">';
-            }
 
             var img = document.getElementById("pokemonSprite");
             img.style.display = "block";
@@ -112,6 +113,7 @@ function isWin(answer) {
     return 1;
 }
 
+// Get position of letter for correct answer
 function indexesOf(str, content) {
     var indices = [];
     console.log(str, content);
@@ -121,6 +123,7 @@ function indexesOf(str, content) {
     return indices;
 }
 
+// Replace "_" after a correct answer
 function replaceAt(indices, letter) {
     
     indices.forEach(elem => {
