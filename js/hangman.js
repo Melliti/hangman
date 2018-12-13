@@ -37,6 +37,13 @@ function randomPokemon() {
     return selectedPokemon;
 }
 
+function reset() {
+    pokemonInfo.length = 0;
+    pokemonName = "";
+    attempt = 8;
+    pickPokemon();
+}
+
 // pick a random pokemon name from pokeapi
 function pickPokemon() {
     var reader = new XMLHttpRequest();
