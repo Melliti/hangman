@@ -1,4 +1,16 @@
-#sprite{
+/* #sprite{
     display: table;
     margin: 0 auto;
+} */
+
+#repeatButton {
+    display: table;
+    margin: 0 auto;
+}
+
+#repeatText {
+    display: table;
+    margin: 0 auto;
+    color: darkgrey;
+    font-size: 10px;
 }
