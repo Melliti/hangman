@@ -106,6 +106,8 @@ function checkName() {
 // Triggered when Attempt == 0: Loose condition
 function isLost() {
     document.getElementById("userInput").style.display = "none";
+    M.toast({html: 'loose !', classes: 'rounded red lighten-2'});
+
 }
 
 // Triggered after every correct answers: Check win conditions
@@ -125,6 +127,7 @@ function isWin(answer) {
             img.style.display = "block";
             img.style.margin = "0 auto";
             document.getElementById("userInput").style.display = "none";
+            M.toast({html: 'win !', classes: 'rounded green lighten-2'});
             return 0;
         }
 
