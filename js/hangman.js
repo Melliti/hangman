@@ -41,8 +41,9 @@ function reset() {
     pokemonInfo.length = 0;
     pokemonName = "";
     attempt = 8;
-    var divForSprite = document.getElementById("sprite");
-    divForSprite.parentNode.removeChild(divForSprite);
+    var divForSprite = document.getElementById("pokemonSprite");
+    if (divForSprite != null)
+        divForSprite.parentNode.removeChild(divForSprite);
     document.getElementById("userInput").style.display = "";
     pickPokemon();
 }
@@ -90,9 +91,16 @@ function checkName() {
     var answer = document.getElementById("fullName").value;
     console.log(pokemonInfo[0]);
     if (isWin(answer))
+    {
         if (--attempt == 0)
-            isLost();
-    var answer = document.getElementById("fullName").value = "";
+           isLost();
+        var answer = document.getElementById("fullName").value = "";
+    }
+    else
+    {
+        var divForName = document.getElementById('name');
+        divForName.innerHTML = '<p class=\"center-align\">' + formatStr(answer).toUpperCase() + '</p>';
+    }
 }
 
 // Triggered when Attempt == 0: Loose condition
