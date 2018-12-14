@@ -41,6 +41,9 @@ function reset() {
     pokemonInfo.length = 0;
     pokemonName = "";
     attempt = 8;
+    var divForSprite = document.getElementById("sprite");
+    divForSprite.parentNode.removeChild(divForSprite);
+    document.getElementById("userInput").style.display = "";
     pickPokemon();
 }
 
